@@ -1,5 +1,0 @@
-#!/bin/bash
-cat content.txt |  while read line
-do
-echo ${line}
-done
