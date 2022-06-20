@@ -1,17 +1,14 @@
+version: "3"
 services:
  nginx:
-   image: nginx
-   networks:
-     -my-net
-   ports:
-    -"3000:80"
+  image: nginx
+  networks:
+   - bridgenet
  redis:
-   image: redis
-   networks:
-     -my-net
-   ports:
-    -"4000:6379"
+  image: redis
+  networks:
+   - bridgenet
+networks:
+  bridgenet:
 
- networks:
-   my-net:{}
 
