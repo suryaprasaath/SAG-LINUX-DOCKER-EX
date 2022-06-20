@@ -3,7 +3,6 @@
 
 1. Create a file named file.txt, and create a user sample user. Change the ownership of the file to sampleuser.
 
-
 adduser suser
 touch file.txt
 chown suser file.txt
@@ -12,20 +11,17 @@ chgrp suser file.txt
 
 2. Switch to sample user in terminal then change the permission of the file.txt to the user and group as rwx
 
-
 sudo su suser
 chmod +rwx file.txt
 
 
 3. Increase the open file limit
 
-
 cat /proc/sys/fs/file-max
 sysctl -w fs.file-max=400000
   
 
 4. Increase the swapsize by adding new swap storage
-
 
 dd if=/dev/zero of=/swapfile1 bs=1024 count=524288
 chmod  600 /swapfile1
@@ -35,10 +31,8 @@ Swapon /swapfile1
 
 5.Remove the swap storage
 
-
 swapoff -v /swapfile1
 rm /swapfile1
-
 
 To check use => swapon -s
   
@@ -52,12 +46,10 @@ Gokul 21 Intern
 Sundar 45 CEO
 Anil 38 SRE
                 Output example
-                            Raj(30) – Developer
-
+                Raj(30) – Developer
 
 touch content.txt
 awk '{print $1,"("$2")","- " $3}' content.txt
-
 
 
 7. Write an script that will get the company name as arguments(command line arguments) and print their products by parsing the following json file
@@ -68,11 +60,11 @@ awk '{print $1,"("$2")","- " $3}' content.txt
 “amazon”: [“AWS”,”AWS Gov”,”Amplify”],
 “softwareag”: [“webmethods”,”AIRS”,”ADABAS”,”CumIOT”]
 }
+
 Step 1: touch pro.txt
 Step 2: In product-script.sh
  
 echo `jq ‘.’$1’’ pro.json`
-
 
 Step 3: Execute the script and give an input as an argument 
 sh product-script.sh amazon
@@ -82,12 +74,10 @@ sh product-script.sh amazon
  
 Child.sh
 
-
 #!/bin/bash
 #Author : Surya
 #Description : Sum of n Prime numbers
 #Creation date : 17-06-2022
-
 
 for((i=2; i<=$1; i++))
 do
@@ -109,12 +99,10 @@ echo "Sum is $(($sum+2))"
 
 Parent.sh
 
-
 #!/bin/bash
 #Author : Surya
 #Description : Script to check if file exists or not.
 #Creation date : 17-06-2022
-
 
 if [ -e 'child.sh' ]
 then
@@ -127,11 +115,9 @@ fi
 
 9. Install the apache httpd server(centos preferred), and the home page should say “SoftwareAG”
 
-
 sudo yum update httpd
 sudo systemctl start httpd
 sudo systemctl status httpd
-
 
 Next step is to edit the index.html file in the /var/www/html directory to display SoftwareAG
 
@@ -139,13 +125,10 @@ Next step is to edit the index.html file in the /var/www/html directory to displ
 
 10. Make the Https server an Linux systemd service and write an script to stop, start and restart the server via systemctl
 
-
 Create a service file in /etc/systemd/system/ directory
-
 
 [Unit]
 Description=Http Server
-
 
 [Service]
 User=surya
@@ -155,9 +138,7 @@ Restart=always
 
 Script to start stop and restart the server
 
-
 #!/bin/bash
-
 
 echo Enter your choice
 echo "1)Start server"
@@ -165,17 +146,15 @@ echo "2)Stop server"
 echo "3)Restart server"
 echo "4)Server status"
 
-
 read choice
 
-
 case $choice in
-
 
  1) sudo systemctl start http-server.service;;
  2) sudo systemctl stop http-server.service;;
  3) sudo systemctl restart http-server.service;;
  4) sudo systemctl status http-server.service;;
 
-
 esac
+
+
