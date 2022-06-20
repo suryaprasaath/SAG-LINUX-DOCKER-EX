@@ -1,4 +1,4 @@
-﻿Linux & Bash Scripting Exercises
+########################     Linux & Bash Scripting Exercises   ######################
 
 
 1. Create a file named file.txt, and create a user sample user. Change the ownership of the file to sampleuser.
@@ -24,8 +24,6 @@ cat /proc/sys/fs/file-max
 sysctl -w fs.file-max=400000
   
 
-
-
 4. Increase the swapsize by adding new swap storage
 
 
@@ -34,8 +32,6 @@ chmod  600 /swapfile1
 mkswap /swapfile1
 Swapon /swapfile1
   
-
-
 
 5.Remove the swap storage
 
@@ -61,7 +57,6 @@ Anil 38 SRE
 
 touch content.txt
 awk '{print $1,"("$2")","- " $3}' content.txt
-
 
 
 
@@ -112,10 +107,6 @@ done
 echo "Sum is $(($sum+2))"
 
 
-
-
-
-
 Parent.sh
 
 
@@ -145,11 +136,6 @@ sudo systemctl status httpd
 Next step is to edit the index.html file in the /var/www/html directory to display SoftwareAG
 
 
-  
-
-
-
-
 
 10. Make the Https server an Linux systemd service and write an script to stop, start and restart the server via systemctl
 
@@ -165,10 +151,6 @@ Description=Http Server
 User=surya
 ExecStart=/home/surya/Desktop/linuxex/http-server.sh
 Restart=always
-
-
-
-
 
 
 Script to start stop and restart the server
