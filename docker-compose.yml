@@ -1,0 +1,17 @@
+services:
+ nginx:
+   image: nginx
+   networks:
+     -my-net
+   ports:
+    -"3000:80"
+ redis:
+   image: redis
+   networks:
+     -my-net
+   ports:
+    -"4000:6379"
+
+ networks:
+   my-net:{}
+

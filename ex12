@@ -1,0 +1,7 @@
+[Unit]
+Description=Http Server
+
+[Service]
+User=surya
+ExecStart=/home/Desktop/linuxex/http-server.sh
+Restart=always
