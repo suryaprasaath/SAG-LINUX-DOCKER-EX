@@ -1,4 +1,4 @@
-########################     Linux & Bash Scripting Exercises   ######################
+                                        ########################     Linux & Bash Scripting Exercises   ######################
 
 
 1. Create a file named file.txt, and create a user sample user. Change the ownership of the file to sampleuser.
