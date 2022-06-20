@@ -1,0 +1,62 @@
+﻿Scenario Based exercise 
+
+
+Write a Docker file to create an image with the apache httpd2 server and make the start of the httpd2 server as the container entry point.
+Create a git repository with some html files for our web server, clone the repo to a local linux machine.
+Create a bash script which will pull the contents from the GitHub Repo every 5 hours (use Linux Cron) to the local cloned repo, The script should log all these activities to an log file with timestamp (file which keep track of all script runs)
+Spin up the container out of the image you create from the docker file, expose the port 80, mount the dir where you have cloned the git repo to the dir inside the container from where httpd2 server reads the HTML files (/var/www/html)
+Do all the above steps inside an AWS linux EC2 machine and share the public ip/DNS of the VM, by allowing the traffic to reach your webpage
+First I have launched an EC2 instance with Ubuntu AMI.
+Next step is to install the git and docker in the ec2 instance by using the commands.
+
+
+sudo apt-get update
+sudo apt-get install docker
+sudo apt-get install git
+
+
+
+
+Docker file to create an image with the apache httpd2 server and make the start of the httpd2 server as the container entry point
+
+
+FROM ubuntu:latest
+RUN apt-get -y update
+RUN apt-get install -y apache2 
+RUN apt-get install -y apache2-utils
+EXPOSE 80
+COPY dockerex/landingpageSAG/index.html /var/www/html/index.html
+ENTRYPOINT ["/usr/sbin/apache2ctl"]
+CMD ["-D","FOREGROUND"]
+
+
+
+
+Next step is to clone the repository into the ec2 directory
+
+
+sudo clone https://github.com/suryaprasaath/landingpageSAG.git
+
+
+Bash script which will pull the contents from the GitHub Repo every 5 hours (use Linux Cron) to the local cloned repo
+
+
+update.sh
+git pull
+date>>log.txt
+
+
+crontab -l
+* */5 * * * update.sh
+
+
+Build the image
+
+
+sudo docker build t apache-server dockerex/Dockerfile
+
+
+Next step is to spin up the container
+
+
+sudo docker run -p 80:80 -v /home/ubuntu/dockerex/landingpageSAG/:/var/www/html apache-server
