@@ -1,2 +1,0 @@
-#!/bin/bash
-echo `jq '.'$1'' pro.json`
